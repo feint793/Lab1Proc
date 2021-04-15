@@ -13,3 +13,6 @@ bereza
 2
 malina
 7
+3
+rose
+2

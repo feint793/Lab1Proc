@@ -13,15 +13,21 @@ namespace nature {
 		long int m_Age; // age
 		// // name
 	};
+	struct flowers
+	{
+		enum Type { Wild, Home };
+		Type kind;
+	};
 	struct shape {
 		// значения ключей для каждой из фигур
-		enum key { TREES, SHRUBS };
+		enum key { TREES, SHRUBS, FLOWERS };
 		key k; // ключ
 		char m_Name[50];
 		int rate;
 		union {
 			shrubs s;
 			trees t;
+			flowers f;
 		};
 	};
 	struct container

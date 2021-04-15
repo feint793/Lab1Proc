@@ -1,5 +1,5 @@
 Filled container. 
-Container contains 5 elements.
+Container contains 6 elements.
 0: It's a tree: elka
 Age: 9
 1: It's a shrub: papor
@@ -10,4 +10,6 @@ Age: 11
 Age: 21
 4: It's a shrub: malina
 Month: July
+5: It's a flower: rose
+Type: Home
 Empty container. 
