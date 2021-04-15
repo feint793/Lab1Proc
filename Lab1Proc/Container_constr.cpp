@@ -44,6 +44,7 @@ namespace nature {
 	{
 		shape* sp;
 		string Type;
+		string Place_P;
 		getline(ifst, Type);
 		int k = stoi(Type);
 		//ifst >> k;
@@ -53,18 +54,36 @@ namespace nature {
 			sp->k = shape::key::TREES;
 			ifst.getline(sp->m_Name, 50);
 			InTrees(sp->t, ifst);
-			//ifst >> sp->rate;
-			return sp;
+			break;
 		case 2:
 			sp = new shape;
 			sp->k = shape::key::SHRUBS;
 			ifst.getline(sp->m_Name, 50);
 			InShrubs(sp->s, ifst);
-			//ifst >> sp->rate;
-			return sp;
+			break;
 		default:
 			return 0;
 		}
+
+		getline(ifst, Place_P);
+		int Pass = stoi(Place_P);
+		switch (Pass) {
+		case 1:
+			sp->area = shape::place::Forest;
+			break;
+		case 2:
+			sp->area = shape::place::Garden;
+			break;
+		case 3:
+			sp->area = shape::place::Steppe;
+			break;
+		case 4:
+			sp->area = shape::place::Tundra;
+			break;
+		default:
+			return 0;
+		}
+		return sp;
 	}
 
 	void OutShape(shape& sh, ofstream& ofst) {
@@ -80,7 +99,24 @@ namespace nature {
 		default:
 			ofst << "Incorrect object!" << endl;
 		}
-		//ofst << ". Area of growth: " << sh.rate << endl;
+
+		switch (sh.area) {
+		case shape::place::Forest:
+			ofst << "Grows in a forest" << endl;
+			break;
+		case shape::place::Garden:
+			ofst << "Grows in a garden" << endl;
+			break;
+		case shape::place::Steppe:
+			ofst << "Grows in a steppe" << endl;
+			break;
+		case shape::place::Tundra:
+			ofst << "Grows in a tundra" << endl;
+			break;
+		default:
+			ofst << "Incorrect area!" << endl;
+		}
+		
 	}
 
 	void InShrubs(shrubs& s, ifstream& ifst)

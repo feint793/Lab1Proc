@@ -2,12 +2,17 @@ Filled container.
 Container contains 5 elements.
 0: It's a tree: elka
 Age: 9
+Grows in a garden
 1: It's a shrub: papor
 Month: June
+Grows in a forest
 2: It's a tree: dub
 Age: 11
+Grows in a tundra
 3: It's a tree: bereza
 Age: 21
+Grows in a steppe
 4: It's a shrub: malina
 Month: July
+Grows in a forest
 Empty container. 
