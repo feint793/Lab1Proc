@@ -120,6 +120,23 @@ namespace nature {
 		default:
 			ofst << "Incorrect object!" << endl;
 		}
+
+		switch (sh.area) {
+		case shape::place::Forest:
+			ofst << "Grows in a forest" << endl;
+			break;
+		case shape::place::Garden:
+			ofst << "Grows in a garden" << endl;
+			break;
+		case shape::place::Steppe:
+			ofst << "Grows in a steppe" << endl;
+			break;
+		case shape::place::Tundra:
+			ofst << "Grows in a tundra" << endl;
+			break;
+		default:
+			ofst << "Incorrect area!" << endl;
+		}
 	}
 
 	void InShrubs(shrubs& s, ifstream& ifst)
