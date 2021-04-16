@@ -23,7 +23,7 @@ namespace nature {
 		enum key { TREES, SHRUBS, FLOWERS };
 		key k; // ключ
 		char m_Name[50];
-		enum place { Forest, Garden, Steppe, Tundra};
+		enum place { Forest, Garden, Steppe, Tundra };
 		place area;
 		union {
 			shrubs s;

@@ -82,7 +82,7 @@ namespace nature {
 			ifst.getline(sp->m_Name, 50);
 			InShrubs(sp->s, ifst);
 			//ifst >> sp->rate;
-			return sp;
+			break;
 		case 3:
 			sp = new shape;
 			sp->k = shape::key::FLOWERS;
