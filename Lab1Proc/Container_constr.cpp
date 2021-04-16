@@ -13,6 +13,9 @@ namespace nature {
 	void InShrubs(shrubs& s, ifstream& ifst);
 	void OutTrees(trees& t, ofstream& ofst);
 	void OutShrubs(shrubs& s, ofstream& ofst);
+	int CountLettersS(shape& s);
+	
+	//int CountLetters(shape& sh);
 
 	void Init(container& c)
 	{
@@ -37,8 +40,24 @@ namespace nature {
 		for (int i = 0; i < c.len; i++) {
 			ofst << i << ": ";
 			OutShape(*(c.cont[i]), ofst);
+			ofst << "Count of consonants = "
+				<< CountLettersS(*(c.cont[i])) << endl;
 		}
 	}
+
+	bool Compare(shape* first, shape* second);
+	// Сортировка содержимого контейнера
+	void Sort(container& c) {
+		for (int i = 0; i < c.len - 1; i++) {
+			for (int j = i + 1; j < c.len; j++) {
+				if (Compare(c.cont[i], c.cont[j])) {
+					shape* tmp = c.cont[i];
+					c.cont[i] = c.cont[j];
+					c.cont[j] = tmp;
+				}
+			}
+		}
+	};
 
 	shape* InShape(ifstream& ifst)
 	{
@@ -66,6 +85,19 @@ namespace nature {
 			return 0;
 		}
 	}
+
+	/*int CountLetters(shape& sh) {
+		switch (sh.k) {
+		case shape::key::TREES:
+			return CountLettersT(sh.t);
+		case shape::key::SHRUBS:
+			return CountLettersS(sh.s);
+		default:
+			return -1;
+		}
+	};*/
+
+	
 
 	void OutShape(shape& sh, ofstream& ofst) {
 		switch (sh.k) {
@@ -133,6 +165,10 @@ namespace nature {
 		
 	}
 
+	bool Compare(shape* first, shape* second) {
+		return CountLettersS(*first) < CountLettersS(*second);
+	};
+
 	void OutShrubs(shrubs& s, ofstream& ofst)
 	{
 		switch (s.flowering) {
@@ -190,4 +226,21 @@ namespace nature {
 	void OutTrees(trees& t, ofstream& ofst) {
 		ofst << "Age: " << t.m_Age << "\n";
 	}
+
+	int CountLettersS(shape& sh) {
+		int letter = 0;
+		int i = 0;
+		char alphabet[] = "bcdfghjklmnpqrstvwxz";
+		//int lent = alphabet.length();
+
+		while (sh.m_Name[i] != '\0')
+		{
+			if (strchr(alphabet, sh.m_Name[i])) {
+				letter++;
+			}
+			i++;
+		}
+		return letter;
+	}
+
 }
