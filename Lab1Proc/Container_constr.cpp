@@ -63,6 +63,7 @@ namespace nature {
 	{
 		shape* sp;
 		string Type;
+		string Place_P;
 		getline(ifst, Type);
 		int k = stoi(Type);
 		//ifst >> k;
@@ -84,6 +85,26 @@ namespace nature {
 		default:
 			return 0;
 		}
+
+		getline(ifst, Place_P);
+		int Pass = stoi(Place_P);
+		switch (Pass) {
+		case 1:
+			sp->area = shape::place::Forest;
+			break;
+		case 2:
+			sp->area = shape::place::Garden;
+			break;
+		case 3:
+			sp->area = shape::place::Steppe;
+			break;
+		case 4:
+			sp->area = shape::place::Tundra;
+			break;
+		default:
+			return 0;
+		}
+		return sp;
 	}	
 
 	void OutShape(shape& sh, ofstream& ofst) {
