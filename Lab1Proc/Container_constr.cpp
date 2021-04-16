@@ -13,6 +13,7 @@ namespace nature {
 	void InShrubs(shrubs& s, ifstream& ifst);
 	void OutTrees(trees& t, ofstream& ofst);
 	void OutShrubs(shrubs& s, ofstream& ofst);
+	void OutOnlyTrees(shape& sh, ofstream& ofst);
 
 	void Init(container& c)
 	{
@@ -189,5 +190,15 @@ namespace nature {
 
 	void OutTrees(trees& t, ofstream& ofst) {
 		ofst << "Age: " << t.m_Age << "\n";
+	}
+
+	void OutOnlyTrees(container& c, ofstream& ofst) {
+		ofst << "Only trees: " << endl;
+		for (int i = 0; i < c.len; i++) {
+			ofst << i << ": ";
+			if (c.cont[i]->k == shape::TREES)
+				OutShape(*(c.cont[i]), ofst);
+
+		}
 	}
 }
