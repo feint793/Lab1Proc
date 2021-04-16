@@ -10,7 +10,9 @@ namespace nature {
 	void Clear(container& c);
 	void InContainer(container& c, ifstream& ifst);
 	void OutContainer(container& c, ofstream& ofst);
+	void OutOnlyTrees(container& c, ofstream& ofst);
 	void Sort(container& c);
+	
 }
 using namespace nature;
 
@@ -35,6 +37,8 @@ int main(int argc, char* argv[])
 	ofst << "Filled container. " << endl;
 	Sort(c);
 	OutContainer(c, ofst);
+	ofst << endl << "OutOnlyTrees: " << endl;
+	OutOnlyTrees(c, ofst);
 	Clear(c);
 	ofst << "Empty container. " << endl;
 	//OutContainer(c, ofst);
