@@ -13,6 +13,8 @@ namespace nature {
 	void InShrubs(shrubs& s, ifstream& ifst);
 	void OutTrees(trees& t, ofstream& ofst);
 	void OutShrubs(shrubs& s, ofstream& ofst);
+	void OutOnlyTrees(shape& sh, ofstream& ofst);
+
 	int CountLettersS(shape& s);
 	void Sort(container& c);
 	
@@ -209,21 +211,4 @@ namespace nature {
 	void OutTrees(trees& t, ofstream& ofst) {
 		ofst << "Age: " << t.m_Age << "\n";
 	}
-
-	int CountLettersS(shape& sh) {
-		int letter = 0;
-		int i = 0;
-		char alphabet[] = "bcdfghjklmnpqrstvwxz";
-		//int lent = alphabet.length();
-
-		while (sh.m_Name[i] != '\0')
-		{
-			if (strchr(alphabet, sh.m_Name[i])) {
-				letter++;
-			}
-			i++;
-		}
-		return letter;
-	}
-
 }
