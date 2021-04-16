@@ -73,15 +73,13 @@ namespace nature {
 			sp->k = shape::key::TREES;
 			ifst.getline(sp->m_Name, 50);
 			InTrees(sp->t, ifst);
-			//ifst >> sp->rate;
-			return sp;
+			break;
 		case 2:
 			sp = new shape;
 			sp->k = shape::key::SHRUBS;
 			ifst.getline(sp->m_Name, 50);
 			InShrubs(sp->s, ifst);
-			//ifst >> sp->rate;
-			return sp;
+			break;
 		default:
 			return 0;
 		}
