@@ -14,8 +14,8 @@ namespace nature {
 	void OutTrees(trees& t, ofstream& ofst);
 	void OutShrubs(shrubs& s, ofstream& ofst);
 	int CountLettersS(shape& s);
+	void Sort(container& c);
 	
-	//int CountLetters(shape& sh);
 
 	void Init(container& c)
 	{
@@ -84,20 +84,7 @@ namespace nature {
 		default:
 			return 0;
 		}
-	}
-
-	/*int CountLetters(shape& sh) {
-		switch (sh.k) {
-		case shape::key::TREES:
-			return CountLettersT(sh.t);
-		case shape::key::SHRUBS:
-			return CountLettersS(sh.s);
-		default:
-			return -1;
-		}
-	};*/
-
-	
+	}	
 
 	void OutShape(shape& sh, ofstream& ofst) {
 		switch (sh.k) {
@@ -112,7 +99,6 @@ namespace nature {
 		default:
 			ofst << "Incorrect object!" << endl;
 		}
-		//ofst << ". Area of growth: " << sh.rate << endl;
 	}
 
 	void InShrubs(shrubs& s, ifstream& ifst)
@@ -159,10 +145,7 @@ namespace nature {
 			break;
 		default:
 			cout << "Error in InShrubs func!\n";
-		}
-		//ifst.getline(s., 50);
-		//ifst.getline(s.b, 50);
-		
+		}	
 	}
 
 	bool Compare(shape* first, shape* second) {
