@@ -11,14 +11,15 @@ namespace nature {
 	// дерево
 	struct trees {
 		long int m_Age; // age
-		// // name
+		
 	};
 	struct shape {
 		// значения ключей для каждой из фигур
 		enum key { TREES, SHRUBS };
 		key k; // ключ
 		char m_Name[50];
-		int rate;
+		enum place { Forest, Garden, Steppe, Tundra};
+		place area;
 		union {
 			shrubs s;
 			trees t;
