@@ -13,6 +13,8 @@ namespace nature {
 	void InShrubs(shrubs& s, ifstream& ifst);
 	void OutTrees(trees& t, ofstream& ofst);
 	void OutShrubs(shrubs& s, ofstream& ofst);
+	void InFlowers(flowers& f, ifstream& ifst);
+	void OutFlowers(flowers& f, ofstream& ofst);
 	int CountLettersS(shape& s);
 	void Sort(container& c);	
 	void OutOnlyTrees(shape& sh, ofstream& ofst);
@@ -79,6 +81,15 @@ namespace nature {
 			sp->k = shape::key::SHRUBS;
 			ifst.getline(sp->m_Name, 50);
 			InShrubs(sp->s, ifst);
+			//ifst >> sp->rate;
+			return sp;
+		case 3:
+			sp = new shape;
+			sp->k = shape::key::FLOWERS;
+			ifst.getline(sp->m_Name, 50);
+			InFlowers(sp->f, ifst);
+			//ifst >> sp->rate;
+			return sp;
 			break;
 		default:
 			return 0;
@@ -114,6 +125,10 @@ namespace nature {
 		case shape::key::SHRUBS:
 			ofst << "It's a shrub: " << sh.m_Name << "\n";
 			OutShrubs(sh.s, ofst);
+			break;
+		case shape::key::FLOWERS:
+			ofst << "It's a flower: " << sh.m_Name << "\n";
+			OutFlowers(sh.f, ofst);
 			break;
 		default:
 			ofst << "Incorrect object!" << endl;
@@ -245,6 +260,35 @@ namespace nature {
 	void OutTrees(trees& t, ofstream& ofst) {
 		ofst << "Age: " << t.m_Age << "\n";
 	}
+
+	void InFlowers(flowers& f, ifstream& ifst) {
+		string Num;
+		getline(ifst, Num);
+		int Pass = stoi(Num);
+		switch (Pass) {
+		case 1:
+			f.kind = flowers::Type::Wild;
+			break;
+		case 2:
+			f.kind = flowers::Type::Home;
+			break;
+		default:
+			cout << "Error !\n";
+		}
+	};
+	void OutFlowers(flowers& f, ofstream& ofst) {
+		switch (f.kind) {
+		case flowers::Type::Wild:
+			ofst << "Type: Wild\n";
+			break;
+		case flowers::Type::Home:
+			ofst << "Type: Home\n";
+			break;
+		default:
+			cout << "Error !\n";
+		}
+	}
+};
 
 	int CountLettersS(shape& sh) {
 		int letter = 0;
