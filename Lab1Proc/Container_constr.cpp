@@ -89,7 +89,6 @@ namespace nature {
 			ifst.getline(sp->m_Name, 50);
 			InFlowers(sp->f, ifst);
 			//ifst >> sp->rate;
-			return sp;
 			break;
 		default:
 			return 0;
@@ -288,7 +287,6 @@ namespace nature {
 			cout << "Error !\n";
 		}
 	}
-};
 
 	int CountLettersS(shape& sh) {
 		int letter = 0;
