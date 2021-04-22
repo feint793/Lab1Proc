@@ -81,7 +81,7 @@ namespace nature {
 				break;
 			}
 			else {
-				Line.resize(99);
+				Line.resize(49);
 				strcpy_s(sp->m_Name, 50, Line.c_str());
 				InTrees(sp->t, ifst);
 				break;
@@ -97,7 +97,7 @@ namespace nature {
 				break;
 			}
 			else {
-				Line.resize(99);
+				Line.resize(49);
 				strcpy_s(sp->m_Name, 50, Line.c_str());
 				InShrubs(sp->s, ifst);
 				break;
@@ -113,7 +113,7 @@ namespace nature {
 				break;
 			}
 			else {
-				Line.resize(99);
+				Line.resize(49);
 				strcpy_s(sp->m_Name, 50, Line.c_str());
 				InFlowers(sp->f, ifst);
 				break;
