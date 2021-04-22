@@ -1,23 +1,25 @@
 #ifndef __nature__
 #define __nature__
 #include <iostream>
+
 namespace nature {
-	// кустарник
+	
 	struct shrubs {
 		enum Month { Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec };
 		Month flowering;
 	};
 
-	// дерево
 	struct trees {
 		long int m_Age; // age
 		
 	};
+
 	struct flowers
 	{
 		enum Type { Wild, Home };
 		Type kind;
 	};
+
 	struct shape {
 		// значения ключей для каждой из фигур
 		enum key { TREES, SHRUBS, FLOWERS };
@@ -31,12 +33,12 @@ namespace nature {
 			flowers f;
 		};
 	};
+
 	struct container
 	{
 		enum { max_len = 100 }; // максимальная длина
 		int len; // текущая длина
 		shape* cont[max_len];
 	};
-
 }
 #endif

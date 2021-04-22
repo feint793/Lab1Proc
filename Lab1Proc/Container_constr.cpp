@@ -48,7 +48,7 @@ namespace nature {
 	}
 
 	bool Compare(shape* first, shape* second);
-	// Сортировка содержимого контейнера
+	
 	void Sort(container& c) {
 		for (int i = 0; i < c.len - 1; i++) {
 			for (int j = i + 1; j < c.len; j++) {
@@ -64,25 +64,25 @@ namespace nature {
 	shape* InShape(ifstream& ifst)
 	{
 		shape* sp;
-		string Type;
-		string Place_P;
-		string Line;
-		getline(ifst, Type);
-		int k = stoi(Type);
+		string type;
+		string place;
+		string line;
+		getline(ifst, type);
+		int k = stoi(type);
 		//ifst >> k;
 		switch (k) {
 		case 1:
 			sp = new shape;
 			sp->k = shape::key::TREES;
-			getline(ifst, Line);
-			if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
-				strcpy_s(sp->m_Name, 50, Line.c_str());
+			getline(ifst, line);
+			if (line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+				strcpy_s(sp->m_Name, 50, line.c_str());
 				InTrees(sp->t, ifst);
 				break;
 			}
 			else {
-				Line.resize(49);
-				strcpy_s(sp->m_Name, 50, Line.c_str());
+				line.resize(49);
+				strcpy_s(sp->m_Name, 50, line.c_str());
 				InTrees(sp->t, ifst);
 				break;
 			}
@@ -90,15 +90,15 @@ namespace nature {
 		case 2:
 			sp = new shape;
 			sp->k = shape::key::SHRUBS;
-			getline(ifst, Line);
-			if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
-				strcpy_s(sp->m_Name, 50, Line.c_str());
+			getline(ifst, line);
+			if (line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+				strcpy_s(sp->m_Name, 50, line.c_str());
 				InShrubs(sp->s, ifst);
 				break;
 			}
 			else {
-				Line.resize(49);
-				strcpy_s(sp->m_Name, 50, Line.c_str());
+				line.resize(49);
+				strcpy_s(sp->m_Name, 50, line.c_str());
 				InShrubs(sp->s, ifst);
 				break;
 			}
@@ -106,30 +106,30 @@ namespace nature {
 		case 3:
 			sp = new shape;
 			sp->k = shape::key::FLOWERS;
-			getline(ifst, Line);
-			if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
-				strcpy_s(sp->m_Name, 50, Line.c_str());
+			getline(ifst, line);
+			if (line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+				strcpy_s(sp->m_Name, 50, line.c_str());
 				InFlowers(sp->f, ifst);
 				break;
 			}
 			else {
-				Line.resize(49);
-				strcpy_s(sp->m_Name, 50, Line.c_str());
+				line.resize(49);
+				strcpy_s(sp->m_Name, 50, line.c_str());
 				InFlowers(sp->f, ifst);
 				break;
 			}
 			
 		default:
-			char Junk[100]; //для мусора
-			ifst.getline(Junk, 100); //Здесь - выражение
-			ifst.getline(Junk, 100); //Здесь - уникальная характеристика
-			ifst.getline(Junk, 100); //Здесь - оценка
+			char junk[100]; //для мусора
+			ifst.getline(junk, 100); //Здесь - выражение
+			ifst.getline(junk, 100); //Здесь - уникальная характеристика
+			ifst.getline(junk, 100); //Здесь - оценка
 			return 0;
 		}
 
-		getline(ifst, Place_P);
-		int Pass = stoi(Place_P);
-		switch (Pass) {
+		getline(ifst, place);
+		int pass = stoi(place);
+		switch (pass) {
 		case 1:
 			sp->area = shape::place::Forest;
 			break;
@@ -186,10 +186,10 @@ namespace nature {
 
 	void InShrubs(shrubs& s, ifstream& ifst)
 	{
-		string Num;
-		getline(ifst, Num);
-		int Pass = stoi(Num);
-		switch (Pass) {
+		string num;
+		getline(ifst, num);
+		int pass = stoi(num);
+		switch (pass) {
 		case 1:
 			s.flowering = shrubs::Month::Jan;
 			break;
@@ -276,36 +276,30 @@ namespace nature {
 			break;
 		default:
 			cout << "Error in OutShrubs func!\n";
-		}
-		
+		}	
 	}
 
 	void InTrees(trees& t, ifstream& ifst) {
-		string Age;
-		string Line;
-		//getline(ifst, Age);
-		//t.m_Age = stol(Age);
-		//ifst.getline(t.y, 100);
-		getline(ifst, Line);
-		if (Line.length() < 50) { 
-			t.m_Age = stol(Line);
+		string age;
+		string line;
+		getline(ifst, line);
+		if (line.length() < 50) { 
+			t.m_Age = stol(line);
 		}
 		else {
-			Line.resize(49);
-			t.m_Age = stol(Age);
-
+			line.resize(49);
+			t.m_Age = stol(age);
 		}
 	}
-
 
 	void OutTrees(trees& t, ofstream& ofst) {
 		ofst << "Age: " << t.m_Age << "\n";
 	}
 
 	void InFlowers(flowers& f, ifstream& ifst) {
-		string Num;
-		getline(ifst, Num);
-		int Pass = stoi(Num);
+		string num;
+		getline(ifst, num);
+		int Pass = stoi(num);
 		switch (Pass) {
 		case 1:
 			f.kind = flowers::Type::Wild;
@@ -317,6 +311,7 @@ namespace nature {
 			cout << "Error !\n";
 		}
 	};
+
 	void OutFlowers(flowers& f, ofstream& ofst) {
 		switch (f.kind) {
 		case flowers::Type::Wild:
@@ -334,7 +329,6 @@ namespace nature {
 		int letter = 0;
 		int i = 0;
 		char alphabet[] = "bcdfghjklmnpqrstvwxz";
-		//int lent = alphabet.length();
 
 		while (sh.m_Name[i] != '\0')
 		{
