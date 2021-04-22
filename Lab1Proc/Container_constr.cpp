@@ -66,6 +66,7 @@ namespace nature {
 		shape* sp;
 		string Type;
 		string Place_P;
+		string Line;
 		getline(ifst, Type);
 		int k = stoi(Type);
 		//ifst >> k;
@@ -73,24 +74,56 @@ namespace nature {
 		case 1:
 			sp = new shape;
 			sp->k = shape::key::TREES;
-			ifst.getline(sp->m_Name, 50);
-			InTrees(sp->t, ifst);
+			getline(ifst, Line);
+			if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+				strcpy_s(sp->m_Name, 50, Line.c_str());
+				InTrees(sp->t, ifst);
+				break;
+			}
+			else {
+				Line.resize(99);
+				strcpy_s(sp->m_Name, 50, Line.c_str());
+				InTrees(sp->t, ifst);
+				break;
+			}
 			break;
 		case 2:
 			sp = new shape;
 			sp->k = shape::key::SHRUBS;
-			ifst.getline(sp->m_Name, 50);
-			InShrubs(sp->s, ifst);
-			//ifst >> sp->rate;
+			getline(ifst, Line);
+			if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+				strcpy_s(sp->m_Name, 50, Line.c_str());
+				InShrubs(sp->s, ifst);
+				break;
+			}
+			else {
+				Line.resize(99);
+				strcpy_s(sp->m_Name, 50, Line.c_str());
+				InShrubs(sp->s, ifst);
+				break;
+			}
 			break;
 		case 3:
 			sp = new shape;
 			sp->k = shape::key::FLOWERS;
-			ifst.getline(sp->m_Name, 50);
-			InFlowers(sp->f, ifst);
-			//ifst >> sp->rate;
-			break;
+			getline(ifst, Line);
+			if (Line.length() < 50) { //Проверка на переполнение - если длина Line < 100
+				strcpy_s(sp->m_Name, 50, Line.c_str());
+				InFlowers(sp->f, ifst);
+				break;
+			}
+			else {
+				Line.resize(99);
+				strcpy_s(sp->m_Name, 50, Line.c_str());
+				InFlowers(sp->f, ifst);
+				break;
+			}
+			
 		default:
+			char Junk[100]; //для мусора
+			ifst.getline(Junk, 100); //Здесь - выражение
+			ifst.getline(Junk, 100); //Здесь - уникальная характеристика
+			ifst.getline(Junk, 100); //Здесь - оценка
 			return 0;
 		}
 
@@ -249,10 +282,19 @@ namespace nature {
 
 	void InTrees(trees& t, ifstream& ifst) {
 		string Age;
-		getline(ifst, Age);
-		t.m_Age = stol(Age);
+		string Line;
+		//getline(ifst, Age);
+		//t.m_Age = stol(Age);
 		//ifst.getline(t.y, 100);
-		
+		getline(ifst, Line);
+		if (Line.length() < 50) { 
+			t.m_Age = stol(Line);
+		}
+		else {
+			Line.resize(49);
+			t.m_Age = stol(Age);
+
+		}
 	}
 
 
