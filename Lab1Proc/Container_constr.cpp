@@ -18,6 +18,7 @@ namespace nature {
 	int CountLettersS(shape& s);
 	void Sort(container& c);	
 	void OutOnlyTrees(shape& sh, ofstream& ofst);
+	void MultiMethod(container& c, ofstream& ofst);
 
 	void Init(container& c)
 	{
@@ -347,6 +348,45 @@ namespace nature {
 			if (c.cont[i]->k == shape::TREES)
 				OutShape(*(c.cont[i]), ofst);
 
+		}
+	}
+
+	void MultiMethod(container& c, ofstream& ofst) {
+		ofst << "Multimethod." << endl;
+		for (int i = 0; i < c.len - 1; i += 2) {
+			for (int j = i + 1; j < c.len; j++) {
+				switch (c.cont[i]->k) {
+				case shape::TREES:
+					switch (c.cont[j]->k) {
+					case shape::TREES:
+						ofst << "Tree and tree." << endl;
+						break;
+					case shape::SHRUBS:
+						ofst << "Tree and shrub." << endl;
+						break;
+					default:
+						ofst << "Tree and Unknown" << endl;
+					}
+					break;
+				case shape::SHRUBS:
+					switch (c.cont[j]->k) {
+					case shape::TREES:
+						ofst << "Shrub and tree." << endl;
+						break;
+					case shape::SHRUBS:
+						ofst << "Shrub and shrub." << endl;
+						break;
+					default:
+						ofst << "Shrub and Unknown" << endl;
+					}
+					break;
+				default:
+					ofst << "Unknown" << endl;
+				}
+				OutShape(*(c.cont[i]), ofst);
+				OutShape(*(c.cont[j]), ofst);
+				break;
+			}
 		}
 	}
 }

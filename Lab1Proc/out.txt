@@ -1,39 +1,24 @@
 Filled container. 
-Container contains 6 elements.
-0: It's a shrub: papor
+Multimethod.
+Tree and shrub.
+It's a tree: elka
+Age: 9
+Grows in a garden
+It's a shrub: papor
 Month: June
 Grows in a forest
-Count of consonants = 3
-1: It's a tree: bereza
+Tree and tree.
+It's a tree: dub
+Age: 11
+Grows in a tundra
+It's a tree: bereza
 Age: 21
 Grows in a steppe
-Count of consonants = 3
-2: It's a shrub: malina
+Shrub and Unknown
+It's a shrub: malina
 Month: July
 Grows in a forest
-Count of consonants = 3
-3: It's a tree: elka
-Age: 9
-Grows in a garden
-Count of consonants = 2
-4: It's a tree: dub
-Age: 11
-Grows in a tundra
-Count of consonants = 2
-5: It's a flower: rose
+It's a flower: rose
 Type: Home
 Grows in a forest
-Count of consonants = 2
-
-OutOnlyTrees: 
-Only trees: 
-0: 1: It's a tree: bereza
-Age: 21
-Grows in a steppe
-2: 3: It's a tree: elka
-Age: 9
-Grows in a garden
-4: It's a tree: dub
-Age: 11
-Grows in a tundra
-5: Empty container. 
+Empty container. 
