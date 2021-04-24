@@ -10,6 +10,7 @@ namespace nature {
 	void Clear(container& c);
 	void InContainer(container& c, ifstream& ifst);
 	void OutContainer(container& c, ofstream& ofst);
+	void MultiMethod(container& c, ofstream& ofst);
 }
 using namespace nature;
 
@@ -32,7 +33,8 @@ int main(int argc, char* argv[])
 	Init(c);
 	InContainer(c, ifst);
 	ofst << "Filled container. " << endl;
-	OutContainer(c, ofst);
+	MultiMethod(c, ofst);
+	//OutContainer(c, ofst);
 	Clear(c);
 	ofst << "Empty container. " << endl;
 	//OutContainer(c, ofst);
