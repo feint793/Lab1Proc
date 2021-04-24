@@ -364,6 +364,9 @@ namespace nature {
 					case shape::SHRUBS:
 						ofst << "Tree and shrub." << endl;
 						break;
+					case shape::FLOWERS:
+						ofst << "Tree and flower." << endl;
+						break;
 					default:
 						ofst << "Tree and Unknown" << endl;
 					}
@@ -376,10 +379,27 @@ namespace nature {
 					case shape::SHRUBS:
 						ofst << "Shrub and shrub." << endl;
 						break;
+					case shape::FLOWERS:
+						ofst << "Shrub and Flower." << endl;
+						break;
 					default:
 						ofst << "Shrub and Unknown" << endl;
 					}
 					break;
+				case shape::FLOWERS:
+					switch (c.cont[j]->k) {
+					case shape::TREES:
+						ofst << "PUZZLE and APHORISM." << endl;
+						break;
+					case shape::SHRUBS:
+						ofst << "Flower and shrub." << endl;
+						break;
+					case shape::FLOWERS:
+						ofst << "Flower and flower." << endl;
+						break;
+					default:
+						ofst << "Unknown type" << endl;
+					}
 				default:
 					ofst << "Unknown" << endl;
 				}

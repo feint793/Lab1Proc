@@ -14,7 +14,7 @@ Grows in a tundra
 It's a tree: bereza
 Age: 21
 Grows in a steppe
-Shrub and Unknown
+Shrub and Flower.
 It's a shrub: malina
 Month: July
 Grows in a forest
